@@ -18,8 +18,8 @@ This directory contains the custom transistor-level design, simulation, and veri
 ### 1. Schematic Design
 The inverter was designed at the transistor level using `nmos1v` and `pmos1v` devices from the gpdk090 library. The PMOS width was set to twice the NMOS width ($W_p = 2W_n$) to ensure balanced rise and fall times, considering the mobility difference between holes and electrons.
 
-*(Inverter Schematic)*
-![Inverter Schematic](8-Bit-ALU-Custom-IC-Design/Inverter/Pre_Layout/schematic.png)
+
+![Inverter Schematic](Inverter/Pre_Layout/schematic.png)
 
 ### 2. Symbol Generation
 A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
