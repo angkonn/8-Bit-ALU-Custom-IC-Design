@@ -30,6 +30,7 @@ The design started from the absolute basics. Fundamental logic gates (Inverter, 
 
 
 ![Inverter Schematic](Inverter/Pre_Layout/schematic.png)
+![Inverter layout](Inverter/Post_layout/layout.png)
 
 ### 2. Derived Gates (XOR)
 Instead of building the XOR gate directly from MOSFETs, it was constructed hierarchically by instantiating the previously designed basic gates (AND, OR, and Inverters)[cite: 1]. This demonstrates a standard cell-based design approach.
