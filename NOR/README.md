@@ -51,7 +51,7 @@ The Virtuoso Calculator was used to measure the delay and power from the transie
 The layout was manually routed using Metal 1 for interconnects, Poly for the gate, and appropriate N-well/P-sub contacts. The design was optimized to maintain a constant standard cell height for integration into the larger ALU datapath.
 
 *(NOR Layout)*
-![Layout](Post_Layout/Layout.png)
+![Layout](Post Layout/Layout.png)
 
 ### 2. DRC & LVS Check
 *   **Design Rule Check (DRC):** Passed (0 Errors). The layout strictly adheres to the gpdk090 technology spacing and sizing rules.
