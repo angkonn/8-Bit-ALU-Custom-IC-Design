@@ -8,7 +8,7 @@ This directory contains the custom transistor-level design, simulation, and veri
 *   **Design Type:** Full-custom transistor-level design
 *   **Transistor Sizing:** 
     *   **PMOS:** Width = 480nm, Length = 100nm
-    *   **NMOS:** Width = 120nm, Length = 100nm
+    *   **NMOS:** Width = 240nm, Length = 100nm
 *   **Verification:** Passed **DRC** and **LVS** checks.
 
 ---
