@@ -15,7 +15,7 @@ The project was built using a hierarchical, cell-based design approach. The fold
 *   **`8-bit_Ripple_Carry_Adder/`**: The 8-bit addition engine created by cascading eight 1-bit Full Adders.
 *   **`ALU_8bit/`**: The final integrated module containing the schematic, layout, and simulation waveforms of the complete 8-bit ALU.
 
-## 🚀 Project Highlights
+##  Project Highlights
 *   **Scale:** Designed a complex datapath integrating approximately **360+ transistors**[cite: 1].
 *   **Methodology:** Employed a hierarchical design flow. Basic logic cells were created at the transistor level and then instantiated (reused) to build larger functional blocks like XOR gates, Full Adders, and the complete ALU[cite: 1].
 *   **Architecture:** Implemented an 8-bit Ripple Carry Adder, Subtraction Logic via an XOR bank (2's complement), and Tristate Buffer output control for safe W-bus interfacing[cite: 1].
@@ -23,7 +23,7 @@ The project was built using a hierarchical, cell-based design approach. The fold
 
 ---
 
-## 🛠️ Design Flow & Architecture
+##  Design Flow & Architecture
 
 ### 1. Basic Logic Gates & Symbol Generation
 The design started from the absolute basics. Fundamental logic gates (Inverter, NAND, AND, OR) were designed at the transistor level using NMOS and PMOS devices from the gpdk090 library[cite: 1]. Symbols were generated for these gates to allow for hierarchical design reuse[cite: 1].
@@ -60,7 +60,7 @@ Instead of drawing the entire ALU polygon-by-polygon, the layout was generated h
 
 ---
 
-## ⚡ Post-Layout Simulation & Performance Analysis
+##  Post-Layout Simulation & Performance Analysis
 The `av_extracted` view was generated to include parasitic resistances and capacitances[cite: 1]. Transient analysis was run using Cadence ADE L to evaluate the true physical performance of the ALU.
 
 *   **Worst-case Propagation Delay (Critical Path):** **4.771 ns**[cite: 1]
@@ -72,7 +72,7 @@ The `av_extracted` view was generated to include parasitic resistances and capac
 
 ![Simulation Waveform](ALU_8bit/Post_layout/waveform.png)
 
-## 💻 Tools Used
+##  Tools Used
 *   **Schematic Entry:** Cadence Virtuoso Schematic Editor L[cite: 1]
 *   **Simulation:** Cadence Analog Design Environment (ADE L - Spectre)[cite: 1]
 *   **Layout Verification:** Assura DRC and LVS[cite: 1]
