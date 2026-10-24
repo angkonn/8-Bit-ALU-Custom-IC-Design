@@ -54,6 +54,11 @@ The layout of the 8-bit ALU was generated hierarchically, integrating the layout
 
 *(ALU_8bit Layout)*
 ![Layout](Post_layout/Layout/Layout_main.png)
+![Layout](Post_layout/Layout/Screenshot_20261021_113428.png)
+![Layout](Post_layout/Layout/Screenshot_20261021_113437.png)
+![Layout](Post_layout/Layout/Screenshot_20261021_113446.png)
+![Layout](Post_layout/Layout/Screenshot_20261021_113452.png)
+
 
 ### 2. DRC & LVS Check
 *   **Design Rule Check (DRC):** Passed (0 Errors). The layout adheres to all minimum spacing, width, and enclosure rules of the gpdk090 technology.
