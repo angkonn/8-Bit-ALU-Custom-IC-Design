@@ -25,23 +25,23 @@ The inverter was designed at the transistor level using `nmos1v` and `pmos1v` de
 A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
 
 *(Inverter Symbol)*
-![Inverter Symbol](symbol.png)
+![Inverter Symbol](Pre_Layout/symbol.png)
 
 ### 3. Pre-Layout Transient Simulation
 Transient analysis was performed using **Cadence ADE L** to evaluate the logical functionality and timing characteristics. A pulse voltage source was applied to the input, and the output correctly demonstrated logic inversion.
 
 *(Pre-Layout Simulation Waveform)*
-![Inverter Waveform](waveform.png)
+![Inverter Waveform](Pre_Layout/waveform.png)
 
 #### Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to measure the delay and power from the transient simulation data.
 
 *   **Propagation Delay:** **39.91 ps (39.91E-9 s)**
     *   *Methodology:* Measured from the 50% point of the input rising edge to the 50% point of the output falling edge (Threshold = 0.6V).
-    *   ![Delay Calculation](delay.png)
+    *   ![Delay Calculation](Pre_Layout/delay.png)
 *   **Average Power Consumption:** **2.958 µW (2.958E-6 W)**
     *   *Methodology:* Calculated using the `average(getData(":pwr" ?result "tran"))` function over the simulation window.
-    *   ![Power Calculation](avg_power.png)
+    *   ![Power Calculation](Pre_Layout/avg_power.png)
 
 ---
 
@@ -51,7 +51,7 @@ The Virtuoso Calculator was used to measure the delay and power from the transie
 The layout was manually routed using Metal 1 for interconnects, Poly for the gate, and appropriate N-well/P-sub contacts. The design was optimized to maintain a constant standard cell height for integration into the larger ALU datapath.
 
 *(Inverter Layout)*
-![Layout](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/layout.png)
+![Layout](Post_layout/layout.png)
 
 ### 2. DRC & LVS Check
 *   **Design Rule Check (DRC):** Passed (0 Errors). The layout strictly adheres to the gpdk090 technology spacing and sizing rules.
@@ -61,13 +61,13 @@ The layout was manually routed using Metal 1 for interconnects, Poly for the gat
 The `av_extracted` view was generated using Assura Quantus QRC to include parasitic resistances and capacitances contributed by the physical routing. 
 
 *(av_extracted View)*
-![av_extracted](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/av_extracted.png)
+![av_extracted](Post_layout/av_extracted.png)
 
 #### Post-Layout Performance Metrics
 *   **Propagation Delay:** **39.72 ps (39.72E-9 s)**
-    *   ![Post-Layout Delay Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/delay_2.png)
+    *   ![Post-Layout Delay Calculation](Post_layout/delay.png)
 *   **Average Power Consumption:** **2.003 µW (2.003E-6 W)**
-    *   ![Post-Layout Power Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/avg_power_2.png)
+    *   ![Post-Layout Power Calculation](Post_layout/avg_power.png)
 
 ---
 
