@@ -61,16 +61,16 @@ The layout was manually routed using Metal 1 for interconnects, Poly for the gat
 The `av_extracted` view was generated using Assura Quantus QRC to include parasitic resistances and capacitances contributed by the physical routing. 
 
 *(av_extracted View)*
-![av_extracted](Post%20Layout/av_extracted_2.png)
+![av_extracted](Post%20Layout/av_extracted.png)
 
 *(Post-Layout Simulation Waveform)*
-![Post-Layout Waveform](Post_Layout/post_layout_simulation.png)
+![Post-Layout Waveform](Post%20Layout/post_layout_simulation.png)
 
 #### Post-Layout Performance Metrics
 *   **Propagation Delay:** **41.46 ps (41.46E-12 s)**
-    *   ![Post-Layout Delay Calculation](Post_Layout/Post_layout_delay.png)
+    *   ![Post-Layout Delay Calculation](Post%20Layout/Post_layout_delay.png)
 *   **Average Power Consumption:** **3.373 µW (3.373E-6 W)**
-    *   ![Post-Layout Power Calculation](Post_Layout/power_avg_post_layout.png)
+    *   ![Post-Layout Power Calculation](Post%20Layout/power_avg_post_layout.png)
 
 ---
 
