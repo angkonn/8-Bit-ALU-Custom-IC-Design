@@ -29,7 +29,7 @@ The project was built using a hierarchical, cell-based design approach. The fold
 The design started from the absolute basics. Fundamental logic gates (Inverter, NAND, AND, OR) were designed at the transistor level using NMOS and PMOS devices from the gpdk090 library[cite: 1]. Symbols were generated for these gates to allow for hierarchical design reuse[cite: 1].
 
 *(Example: Inverter Schematic and Symbol)*
-![Inverter Schematic](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Pre_Layout/schematic.png)
+![Inverter Schematic](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/blob/3b2c83a493dc9792c0cc03a4ef8ec18aaca00d9c/Inverter/Pre_Layout/schematic.png)
 
 ### 2. Derived Gates (XOR)
 Instead of building the XOR gate directly from MOSFETs, it was constructed hierarchically by instantiating the previously designed basic gates (AND, OR, and Inverters)[cite: 1]. This demonstrates a standard cell-based design approach.
