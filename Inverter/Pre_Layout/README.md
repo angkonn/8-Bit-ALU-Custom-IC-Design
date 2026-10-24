@@ -25,13 +25,13 @@ The inverter was designed at the transistor level using `nmos1v` and `pmos1v` de
 A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
 
 *(Inverter Symbol)*
-![Inverter Symbol](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Pre_Layout/symbol.png)
+![Inverter Symbol](symbol.png)
 
 ### 3. Pre-Layout Transient Simulation
 Transient analysis was performed using **Cadence ADE L** to evaluate the logical functionality and timing characteristics. A pulse voltage source was applied to the input, and the output correctly demonstrated logic inversion.
 
 *(Pre-Layout Simulation Waveform)*
-![Inverter Waveform](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Pre_Layout/waveform.png)
+![Inverter Waveform](waveform.png)
 
 #### Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to measure the delay and power from the transient simulation data.
