@@ -35,13 +35,13 @@ The design started from the absolute basics. Fundamental logic gates (Inverter, 
 Instead of building the XOR gate directly from MOSFETs, it was constructed hierarchically by instantiating the previously designed basic gates (AND, OR, and Inverters)[cite: 1]. This demonstrates a standard cell-based design approach.
 
 *(Example: Hierarchical XOR Gate Schematic)*
-`![XOR Schematic](Insert_Image_Link_Here)`
+![XOR Schematic](XOR/Pre_layout/Schematic.png)
 
 ### 3. The 8-Bit Ripple Carry Adder
 Eight custom 1-bit Full Adders (FA1X1) were instantiated and cascaded to create the 8-bit Ripple Carry Adder. The carry-out of each stage was strictly tied to the carry-in of the subsequent stage[cite: 1].
 
 *(Insert a high-resolution screenshot of the 8-bit Ripple Carry Adder schematic)*
-`![8-Bit RCA Schematic](Insert_Image_Link_Here)`
+![8-Bit RCA Schematic](8-bit_Ripple_Carry_Adder/Pre-Layout/schematic.png)
 
 ### 4. Complete ALU Architecture
 To convert the adder into a full ALU capable of both addition and subtraction:
@@ -50,13 +50,13 @@ To convert the adder into a full ALU capable of both addition and subtraction:
 *   The final sum output was routed through an 8-bit Tristate Buffer controlled by the `alu_out_en` pin to ensure a high-impedance state when the ALU is not driving the CPU data bus[cite: 1].
 
 *(Insert a screenshot of the final ALU schematic showing the Adder, XOR bank, and Buffers)*
-`![Final ALU Schematic](Insert_Image_Link_Here)`
+![Final ALU Schematic](ALU_8bit/Pre_layout/schematic.png)
 
 ### 5. Hierarchical Custom Layout
 Instead of drawing the entire ALU polygon-by-polygon, the layout was generated hierarchically using the pre-designed basic cell layouts. The integrated layout was verified to be 100% DRC and LVS clean[cite: 1].
 
 *(Insert a clear screenshot of the final 8-bit ALU layout)*
-`![Full Custom Layout](Insert_Image_Link_Here)`
+![Layout](ALU_8bit/Post_layout/Layout/Screenshot_20261021_113335.png)
 
 ---
 
@@ -71,7 +71,7 @@ The `av_extracted` view was generated to include parasitic resistances and capac
     *   *Methodology:* Calculated using the `average(getData("/pwr" ?result "tran"))` function in the Virtuoso Calculator over a 100ns transient simulation window, capturing the dynamic power dissipation during both addition and subtraction operations[cite: 1].
 
 *(Insert a screenshot of the ADE L waveform showing the transient analysis)*
-`![Simulation Waveform](Insert_Image_Link_Here)`
+![Simulation Waveform](ALU_8bit/Post_layout/waveform.png)
 
 ## 💻 Tools Used
 *   **Schematic Entry:** Cadence Virtuoso Schematic Editor L[cite: 1]
