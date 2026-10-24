@@ -51,7 +51,7 @@ The Virtuoso Calculator was used to measure the delay and power from the transie
 The layout was manually routed using Metal 1 for interconnects, Poly for the gate, and appropriate N-well/P-sub contacts. The design was optimized to maintain a constant standard cell height for integration into the larger ALU datapath.
 
 *(NOR Layout)*
-![Layout](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/Layout.png)
+![Layout](Post_Layout/Layout.png)
 
 ### 2. DRC & LVS Check
 *   **Design Rule Check (DRC):** Passed (0 Errors). The layout strictly adheres to the gpdk090 technology spacing and sizing rules.
@@ -61,16 +61,16 @@ The layout was manually routed using Metal 1 for interconnects, Poly for the gat
 The `av_extracted` view was generated using Assura Quantus QRC to include parasitic resistances and capacitances contributed by the physical routing. 
 
 *(av_extracted View)*
-![av_extracted](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/av_extracted_2.png)
+![av_extracted](Post_Layout/av_extracted_2.png)
 
 *(Post-Layout Simulation Waveform)*
-![Post-Layout Waveform](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/post_layout_simulation.png)
+![Post-Layout Waveform](Post_Layout/post_layout_simulation.png)
 
 #### Post-Layout Performance Metrics
 *   **Propagation Delay:** **41.46 ps (41.46E-12 s)**
-    *   ![Post-Layout Delay Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/Post_layout_delay.png)
+    *   ![Post-Layout Delay Calculation](Post_Layout/Post_layout_delay.png)
 *   **Average Power Consumption:** **3.373 µW (3.373E-6 W)**
-    *   ![Post-Layout Power Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/power_avg_post_layout.png)
+    *   ![Post-Layout Power Calculation](Post_Layout/power_avg_post_layout.png)
 
 ---
 
