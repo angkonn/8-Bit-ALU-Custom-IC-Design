@@ -37,12 +37,14 @@ Instead of building the XOR gate directly from MOSFETs, it was constructed hiera
 
 
 ![XOR Schematic](XOR/Pre_layout/Schematic.png)
+![XOR_Layout](XOR/Post_layout/layout.png)
 
 ### 3. The 8-Bit Ripple Carry Adder
 Eight custom 1-bit Full Adders (FA1X1) were instantiated and cascaded to create the 8-bit Ripple Carry Adder. The carry-out of each stage was strictly tied to the carry-in of the subsequent stage[cite: 1].
 
 
 ![8-Bit RCA Schematic](8-bit_Ripple_Carry_Adder/Pre-Layout/schematic.png)
+![8-Bit RCA Layout](8-bit_Ripple_Carry_Adder/Post-Layout/Layout/layout.png)
 
 ### 4. Complete ALU Architecture
 To convert the adder into a full ALU capable of both addition and subtraction:
