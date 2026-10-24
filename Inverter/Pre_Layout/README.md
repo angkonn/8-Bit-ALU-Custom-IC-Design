@@ -3,7 +3,7 @@
 ##  Overview
 This directory contains the custom transistor-level design, simulation, and verification of a standard CMOS Inverter. It is a fundamental building block for the 8-bit ALU project. The design is implemented using **Cadence Virtuoso** and the **gpdk090 (90nm) CMOS process technology**.
 
-## 🚀 Design Highlights
+##  Design Highlights
 *   **Technology Node:** Cadence gpdk090 (90nm)
 *   **Design Type:** Full-custom transistor-level design
 *   **Transistor Sizing:** 
@@ -19,7 +19,7 @@ This directory contains the custom transistor-level design, simulation, and veri
 The inverter was designed at the transistor level using `nmos1v` and `pmos1v` devices from the gpdk090 library. The PMOS width was set to twice the NMOS width ($W_p = 2W_n$) to ensure balanced rise and fall times, considering the mobility difference between holes and electrons.
 
 *(Inverter Schematic)*
-![Inverter Schematic](Inverter/Pre_Layout/schematic.png)
+![Inverter Schematic](8-Bit-ALU-Custom-IC-Design/Inverter/Pre_Layout/schematic.png)
 
 ### 2. Symbol Generation
 A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
