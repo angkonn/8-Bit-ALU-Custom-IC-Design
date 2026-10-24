@@ -56,7 +56,7 @@ To convert the adder into a full ALU capable of both addition and subtraction:
 Instead of drawing the entire ALU polygon-by-polygon, the layout was generated hierarchically using the pre-designed basic cell layouts. The integrated layout was verified to be 100% DRC and LVS clean[cite: 1].
 
 
-![Layout](ALU_8bit/Post_layout/Layout/Screenshot_20261021_113335.png)
+![Layout](ALU_8bit/Post_layout/Layout/Layout_main.png)
 
 ---
 
