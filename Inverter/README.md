@@ -1,14 +1,14 @@
-# 2-Input NOR Gate - Custom IC Design
+# CMOS Inverter - Custom IC Design
 
 ## Overview
-This directory contains the custom transistor-level design, simulation, and verification of a 2-Input CMOS NOR Gate. It is a fundamental building block for the 8-bit ALU project. The design is implemented using **Cadence Virtuoso** and the **gpdk090 (90nm) CMOS process technology**.
+This directory contains the custom transistor-level design, simulation, and verification of a standard CMOS Inverter. It is a fundamental building block for the 8-bit ALU project. The design is implemented using **Cadence Virtuoso** and the **gpdk090 (90nm) CMOS process technology**.
 
 ## Design Highlights
 *   **Technology Node:** Cadence gpdk090 (90nm)
 *   **Design Type:** Full-custom transistor-level design
 *   **Transistor Sizing:** 
     *   **PMOS:** Width = 480nm, Length = 100nm
-    *   **NMOS:** Width = 120nm, Length = 100nm
+    *   **NMOS:** Width = 240nm, Length = 100nm
 *   **Verification:** Passed **DRC** and **LVS** checks.
 
 ---
@@ -16,32 +16,32 @@ This directory contains the custom transistor-level design, simulation, and veri
 ## Pre-Layout Design & Simulation
 
 ### 1. Schematic Design
-The 2-Input NOR gate was designed at the transistor level using `nmos1v` and `pmos1v` devices from the gpdk090 library. To ensure balanced rise and fall times, the PMOS width was sized to be four times the NMOS width ($W_p = 4W_n$) due to the series connection of PMOS devices and parallel connection of NMOS devices in a standard CMOS NOR architecture.
+The inverter was designed at the transistor level using `nmos1v` and `pmos1v` devices from the gpdk090 library. The PMOS width was set to twice the NMOS width ($W_p = 2W_n$) to ensure balanced rise and fall times, considering the mobility difference between holes and electrons.
 
-*(NOR Schematic)*
-![NOR Schematic](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Pre_Layout/Schematic.png)
+*(Inverter Schematic)*
+![Inverter Schematic](Pre_Layout/schematic.png)
 
 ### 2. Symbol Generation
-A custom symbol was created for the NOR gate to allow for hierarchical design reuse in larger circuits.
+A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
 
-*(NOR Symbol)*
-![NOR Symbol](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Pre_Layout/Symbol.png)
+*(Inverter Symbol)*
+![Inverter Symbol](Pre_Layout/symbol.png)
 
 ### 3. Pre-Layout Transient Simulation
-Transient analysis was performed using **Cadence ADE L** to evaluate the logical functionality and timing characteristics. Pulse voltage sources were applied to the inputs (A and B) with different periods to verify all logic combinations. The output correctly demonstrated NOR logic (output is high only when both inputs are low).
+Transient analysis was performed using **Cadence ADE L** to evaluate the logical functionality and timing characteristics. A pulse voltage source was applied to the input, and the output correctly demonstrated logic inversion.
 
 *(Pre-Layout Simulation Waveform)*
-![NOR Waveform](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Pre_Layout/Pre_layout_simulation.png)
+![Inverter Waveform](Pre_Layout/waveform.png)
 
 #### Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to measure the delay and power from the transient simulation data.
 
-*   **Propagation Delay:** **32.57 ps (32.57E-12 s)**
-    *   *Methodology:* Measured from the 50% point of the input transition to the 50% point of the output transition (Threshold = 0.6V).
-    *   ![Delay Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Pre_Layout/Delay_Pre.png)
-*   **Average Power Consumption:** **3.385 µW (3.385E-6 W)**
+*   **Propagation Delay:** **39.91 ps (39.91E-9 s)**
+    *   *Methodology:* Measured from the 50% point of the input rising edge to the 50% point of the output falling edge (Threshold = 0.6V).
+    *   ![Delay Calculation](Pre_Layout/delay.png)
+*   **Average Power Consumption:** **2.958 µW (2.958E-6 W)**
     *   *Methodology:* Calculated using the `average(getData(":pwr" ?result "tran"))` function over the simulation window.
-    *   ![Power Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Pre_Layout/power_avg_pre_layout.png)
+    *   ![Power Calculation](Pre_Layout/avg_power.png)
 
 ---
 
@@ -50,8 +50,8 @@ The Virtuoso Calculator was used to measure the delay and power from the transie
 ### 1. Custom Layout
 The layout was manually routed using Metal 1 for interconnects, Poly for the gate, and appropriate N-well/P-sub contacts. The design was optimized to maintain a constant standard cell height for integration into the larger ALU datapath.
 
-*(NOR Layout)*
-![Layout](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/Layout.png)
+*(Inverter Layout)*
+![Layout](Post_layout/layout.png)
 
 ### 2. DRC & LVS Check
 *   **Design Rule Check (DRC):** Passed (0 Errors). The layout strictly adheres to the gpdk090 technology spacing and sizing rules.
@@ -61,16 +61,13 @@ The layout was manually routed using Metal 1 for interconnects, Poly for the gat
 The `av_extracted` view was generated using Assura Quantus QRC to include parasitic resistances and capacitances contributed by the physical routing. 
 
 *(av_extracted View)*
-![av_extracted](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/av_extracted_2.png)
-
-*(Post-Layout Simulation Waveform)*
-![Post-Layout Waveform](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/post_layout_simulation.png)
+![av_extracted](Post_layout/av_extracted.png)
 
 #### Post-Layout Performance Metrics
-*   **Propagation Delay:** **41.46 ps (41.46E-12 s)**
-    *   ![Post-Layout Delay Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/Post_layout_delay.png)
-*   **Average Power Consumption:** **3.373 µW (3.373E-6 W)**
-    *   ![Post-Layout Power Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/NOR/Post_Layout/power_avg_post_layout.png)
+*   **Propagation Delay:** **39.72 ps (39.72E-9 s)**
+    *   ![Post-Layout Delay Calculation](Post_layout/delay.png)
+*   **Average Power Consumption:** **2.003 µW (2.003E-6 W)**
+    *   ![Post-Layout Power Calculation](Post_layout/avg_power.png)
 
 ---
 
@@ -78,8 +75,7 @@ The `av_extracted` view was generated using Assura Quantus QRC to include parasi
 
 | Metric | Pre-Layout (Schematic) | Post-Layout (Extracted) | Deviation |
 | :--- | :--- | :--- | :--- |
-| **Propagation Delay** | 32.57 ps | 41.46 ps | ~27.29% increase |
-| **Average Power** | 3.385 µW | 3.373 µW | ~0.35% decrease |
+| **Propagation Delay** | 39.91 ps | 39.72 ps | ~0.47% decrease |
+| **Average Power** | 2.958 µW | 2.003 µW | ~32.28% decrease |
 
-*Analysis:* 
-As expected in physical custom design, the post-layout propagation delay increased noticeably (by ~27%) compared to the ideal schematic. This increase is primarily due to the introduction of parasitic RC elements (capacitance from the substrate, gate-to-drain overlap, and interconnect resistance) modeled in the `av_extracted` view. The average power consumption remained almost identical, indicating that the switching activity and short-circuit power are consistent between the schematic and the optimized physical layout.
+*Analysis:* The very small deviation in propagation delay indicates an optimized, clean layout with minimal parasitic capacitance on the critical path. The difference in average power consumption is within expected variations for post-layout parasitic extraction, likely due to a more realistic modeling of the device and interconnect parasitics in the `av_extracted` view compared to the ideal schematic simulation.
