@@ -28,19 +28,19 @@ The project was built using a hierarchical, cell-based design approach. The fold
 ### 1. Basic Logic Gates & Symbol Generation
 The design started from the absolute basics. Fundamental logic gates (Inverter, NAND, AND, OR) were designed at the transistor level using NMOS and PMOS devices from the gpdk090 library[cite: 1]. Symbols were generated for these gates to allow for hierarchical design reuse[cite: 1].
 
-*(Example: Inverter Schematic and Symbol)*
+
 ![Inverter Schematic](Inverter/Pre_Layout/schematic.png)
 
 ### 2. Derived Gates (XOR)
 Instead of building the XOR gate directly from MOSFETs, it was constructed hierarchically by instantiating the previously designed basic gates (AND, OR, and Inverters)[cite: 1]. This demonstrates a standard cell-based design approach.
 
-*(Example: Hierarchical XOR Gate Schematic)*
+
 ![XOR Schematic](XOR/Pre_layout/Schematic.png)
 
 ### 3. The 8-Bit Ripple Carry Adder
 Eight custom 1-bit Full Adders (FA1X1) were instantiated and cascaded to create the 8-bit Ripple Carry Adder. The carry-out of each stage was strictly tied to the carry-in of the subsequent stage[cite: 1].
 
-*(Insert a high-resolution screenshot of the 8-bit Ripple Carry Adder schematic)*
+
 ![8-Bit RCA Schematic](8-bit_Ripple_Carry_Adder/Pre-Layout/schematic.png)
 
 ### 4. Complete ALU Architecture
@@ -49,13 +49,13 @@ To convert the adder into a full ALU capable of both addition and subtraction:
 *   A single control signal (`alu_sub`) was tied to the second input of all XOR gates and directly to the $C_{in}$ of the first adder. This efficiently added the "+1" required to complete the 2's complement subtraction logic[cite: 1].
 *   The final sum output was routed through an 8-bit Tristate Buffer controlled by the `alu_out_en` pin to ensure a high-impedance state when the ALU is not driving the CPU data bus[cite: 1].
 
-*(Insert a screenshot of the final ALU schematic showing the Adder, XOR bank, and Buffers)*
+
 ![Final ALU Schematic](ALU_8bit/Pre_layout/schematic.png)
 
 ### 5. Hierarchical Custom Layout
 Instead of drawing the entire ALU polygon-by-polygon, the layout was generated hierarchically using the pre-designed basic cell layouts. The integrated layout was verified to be 100% DRC and LVS clean[cite: 1].
 
-*(Insert a clear screenshot of the final 8-bit ALU layout)*
+
 ![Layout](ALU_8bit/Post_layout/Layout/Screenshot_20261021_113335.png)
 
 ---
@@ -70,7 +70,6 @@ The `av_extracted` view was generated to include parasitic resistances and capac
 *   **Average Power Consumption:** **91.28 µW**[cite: 1]
     *   *Methodology:* Calculated using the `average(getData("/pwr" ?result "tran"))` function in the Virtuoso Calculator over a 100ns transient simulation window, capturing the dynamic power dissipation during both addition and subtraction operations[cite: 1].
 
-*(Insert a screenshot of the ADE L waveform showing the transient analysis)*
 ![Simulation Waveform](ALU_8bit/Post_layout/waveform.png)
 
 ## 💻 Tools Used
