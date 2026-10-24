@@ -1,6 +1,6 @@
 # CMOS Inverter - Custom IC Design
 
-## 📌 Overview
+##  Overview
 This directory contains the custom transistor-level design, simulation, and verification of a standard CMOS Inverter. It is a fundamental building block for the 8-bit ALU project. The design is implemented using **Cadence Virtuoso** and the **gpdk090 (90nm) CMOS process technology**.
 
 ## 🚀 Design Highlights
@@ -13,13 +13,13 @@ This directory contains the custom transistor-level design, simulation, and veri
 
 ---
 
-## 🛠️ Pre-Layout Design & Simulation
+##  Pre-Layout Design & Simulation
 
 ### 1. Schematic Design
 The inverter was designed at the transistor level using `nmos1v` and `pmos1v` devices from the gpdk090 library. The PMOS width was set to twice the NMOS width ($W_p = 2W_n$) to ensure balanced rise and fall times, considering the mobility difference between holes and electrons.
 
 *(Inverter Schematic)*
-![Inverter Schematic](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Pre_Layout/schematic.png)
+![Inverter Schematic](Inverter/Pre_Layout/schematic.png)
 
 ### 2. Symbol Generation
 A custom symbol was created for the inverter to allow for hierarchical design reuse in larger circuits (e.g., XOR gate, Full Adder).
@@ -33,7 +33,7 @@ Transient analysis was performed using **Cadence ADE L** to evaluate the logical
 *(Pre-Layout Simulation Waveform)*
 ![Inverter Waveform](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Pre_Layout/waveform.png)
 
-#### ⚡ Pre-Layout Performance Metrics
+####  Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to measure the delay and power from the transient simulation data.
 
 *   **Propagation Delay:** **39.91 ps (39.91E-9 s)**
@@ -45,7 +45,7 @@ The Virtuoso Calculator was used to measure the delay and power from the transie
 
 ---
 
-## 🏗️ Post-Layout Verification & Analysis
+##  Post-Layout Verification & Analysis
 
 ### 1. Custom Layout
 The layout was manually routed using Metal 1 for interconnects, Poly for the gate, and appropriate N-well/P-sub contacts. The design was optimized to maintain a constant standard cell height for integration into the larger ALU datapath.
@@ -63,7 +63,7 @@ The `av_extracted` view was generated using Assura Quantus QRC to include parasi
 *(av_extracted View)*
 ![av_extracted](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/av_extracted.png)
 
-#### ⚡ Post-Layout Performance Metrics
+####  Post-Layout Performance Metrics
 *   **Propagation Delay:** **39.72 ps (39.72E-9 s)**
     *   ![Post-Layout Delay Calculation](https://raw.githubusercontent.com/angkonn/8-Bit-ALU-Custom-IC-Design/main/Basic_Gates/Inverter/Post_Layout/delay_2.png)
 *   **Average Power Consumption:** **2.003 µW (2.003E-6 W)**
@@ -71,7 +71,7 @@ The `av_extracted` view was generated using Assura Quantus QRC to include parasi
 
 ---
 
-## 📊 Pre-Layout vs. Post-Layout Comparison
+##  Pre-Layout vs. Post-Layout Comparison
 
 | Metric | Pre-Layout (Schematic) | Post-Layout (Extracted) | Deviation |
 | :--- | :--- | :--- | :--- |
