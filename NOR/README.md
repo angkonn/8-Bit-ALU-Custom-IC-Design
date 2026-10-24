@@ -61,7 +61,7 @@ The layout was manually routed using Metal 1 for interconnects, Poly for the gat
 The `av_extracted` view was generated using Assura Quantus QRC to include parasitic resistances and capacitances contributed by the physical routing. 
 
 *(av_extracted View)*
-![av_extracted](Post_Layout/av_extracted_2.png)
+![av_extracted](Post-Layout/av_extracted_2.png)
 
 *(Post-Layout Simulation Waveform)*
 ![Post-Layout Waveform](Post_Layout/post_layout_simulation.png)
