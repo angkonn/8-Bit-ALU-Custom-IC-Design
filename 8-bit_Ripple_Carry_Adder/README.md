@@ -29,7 +29,9 @@ A custom symbol was created for the 8-bit adder, utilizing bus notation (`A<7:0>
 Transient analysis was performed using **Cadence ADE L** to evaluate the arithmetic functionality and the worst-case carry propagation delay.
 
 *(Pre-Layout Simulation Waveform)*
-![8-bit RCA Waveform](Pre-Layout/simulation.png)
+![8-bit RCA Waveform](Pre-Layout/waveform1.png)
+
+![8-bit RCA Waveform](Pre-Layout/waveform2.png)
 
 #### Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to measure the delay and average power. The critical path was analyzed by triggering a carry that ripples through all 8 stages.
