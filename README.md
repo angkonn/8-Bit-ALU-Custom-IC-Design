@@ -31,8 +31,7 @@ The project was built using a hierarchical, cell-based design approach. The fold
 ### 1. Basic Logic Gates & Symbol Generation
 The design started from the absolute basics. Fundamental logic gates (Inverter, NAND, XOR) were designed at the transistor level using NMOS and PMOS devices from the gpdk090 library[cite: 4, 10]. Symbols were generated for these gates to allow for hierarchical design reuse[cite: 5].
 
-*(Insert a screenshot of your XOR or Tri-state buffer schematic here)*
-`![Basic Gate Schematic](Insert_Image_Link_Here)`
+Inverter/Pre_Layout/schematic.png
 
 ### 2. The 8-Bit Ripple Carry Adder
 Eight custom 1-bit Full Adders (FA1X1) were instantiated and cascaded to create the 8-bit Ripple Carry Adder. The carry-out of each stage was strictly tied to the carry-in of the subsequent stage[cite: 5, 8].
