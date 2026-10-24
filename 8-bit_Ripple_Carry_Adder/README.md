@@ -58,7 +58,6 @@ The layout was generated hierarchically by assembling the layouts of the individ
 ![Layout Detail 1](Post-Layout/Layout/Screenshot_20261024_013637.png)
 ![Layout Detail 1](Post-Layout/Layout/Screenshot_20261024_013645.png)
 ![Layout Detail 1](Post-Layout/Layout/Screenshot_20261024_013652.png)
-![Layout Detail 1](Post-Layout/Layout/layout.png)
 
 ### 2. DRC & LVS Check
 * **Design Rule Check (DRC):** Passed (0 Errors).
