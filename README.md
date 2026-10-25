@@ -82,3 +82,11 @@ The `av_extracted` view was generated to include parasitic resistances and capac
 *   **Simulation:** Cadence Analog Design Environment (ADE L - Spectre)[cite: 1]
 *   **Layout Verification:** Assura DRC and LVS[cite: 1]
 *   **Technology Node:** Cadence gpdk090 (90nm)[cite: 1]
+
+##  License
+
+This project is licensed under the **MIT License**. 
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the files. However, you must include the original copyright notice and this permission notice in all copies or substantial portions of the work.
+
+See the [LICENSE](LICENSE.md) file for the full text.
