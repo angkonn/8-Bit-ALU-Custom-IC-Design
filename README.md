@@ -65,15 +65,22 @@ Instead of drawing the entire ALU polygon-by-polygon, the layout was generated h
 
 ---
 
-##  Post-Layout Simulation & Performance Analysis
-The `av_extracted` view was generated to include parasitic resistances and capacitances[cite: 1]. Transient analysis was run using Cadence ADE L to evaluate the true physical performance of the ALU.
+##  Pre-Layout & Post-Layout Simulation and Performance Analysis
+Transient analysis was run using Cadence ADE L (Spectre) on both the pre-layout schematic and the `av_extracted` view. The extracted view includes parasitic resistances and capacitances, so it shows the true physical performance of the ALU.
 
-*   **Worst-case Propagation Delay (Critical Path):** **4.771 ns**[cite: 1]
-    *   *Methodology:* This was calculated by forcing a worst-case ripple scenario. A pulse signal was applied to the LSB of Input B (`alu_in_2<0>`) while Input A was set to all 1s (1111 1111). This forces a carry bit to ripple through all 8 full-adder stages. The delay was measured using the Virtuoso Calculator from the rising edge of the input pulse to the rising edge of the final `alu_carry_out` pin[cite: 1].
-*   **Maximum Theoretical Frequency:** **~209 MHz**[cite: 1]
-    *   *Methodology:* Derived using the formula $f_{max} = 1 / \text{Critical Path Delay}$ ($1 / 4.771\text{ ns}$)[cite: 1].
-*   **Average Power Consumption:** **91.28 µW**[cite: 1]
-    *   *Methodology:* Calculated using the `average(getData("/pwr" ?result "tran"))` function in the Virtuoso Calculator over a 100ns transient simulation window, capturing the dynamic power dissipation during both addition and subtraction operations[cite: 1].
+| Metric | Pre-Layout | Post-Layout (Extracted) |
+|---|---|---|
+| **Worst-case Propagation Delay (Critical Path)** | 830.0 ps | **5.602 ns** |
+| **Maximum Theoretical Frequency** | ~1.2 GHz | **~178.5 MHz** |
+| **Average Power Consumption** | 23.19 µW | **28.02 µW** |
+
+*   **Worst-case Propagation Delay (Critical Path):** **5.602 ns** (post-layout) vs. 830.0 ps (pre-layout)
+    *   *Methodology:* This was calculated by forcing a worst-case ripple scenario. A pulse signal was applied to the LSB of Input B (`alu_in_2<0>`) while Input A was set to all 1s (1111 1111). This forces a carry bit to ripple through all 8 full-adder stages. The delay was measured using the Virtuoso Calculator with the `delay()` function, from the rising edge of the input pulse (B<0>) to the rising edge of the final carry-out pin, with both edges measured at the 0.6 V threshold.
+*   **Maximum Theoretical Frequency:** **~178.5 MHz** (post-layout) vs. ~1.2 GHz (pre-layout)
+    *   *Methodology:* Derived using the formula $f_{max} = 1 / \text{Critical Path Delay}$ ($1 / 5.602\text{ ns}$ post-layout, $1 / 830.0\text{ ps}$ pre-layout).
+*   **Average Power Consumption:** **28.02 µW** (post-layout) vs. 23.19 µW (pre-layout)
+    *   *Methodology:* Calculated using the `average(getData(":pwr" ?result "tran"))` function in the Virtuoso Calculator over a 100ns transient simulation window, capturing the dynamic power dissipation during both addition and subtraction operations.
+*   **Observation:** Extracted parasitics slow the critical path by about 6.7× and raise average power by about 21%. This is expected, since the routing resistance and capacitance add load to every stage of the ripple-carry chain.
 
 ![Simulation Waveform](ALU_8bit/Post_layout/waveform.png)
 
