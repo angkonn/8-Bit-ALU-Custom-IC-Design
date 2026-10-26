@@ -32,16 +32,16 @@ A custom symbol was created for the 8-bit ALU to allow for its integration into 
 Transient analysis was performed using **Cadence ADE L** to evaluate the functionality. The simulation verified both addition and subtraction operations, confirming the correct generation of sum/difference and carry-out flags.
 
 *(Pre-Layout Simulation Waveforms)*
-![ALU Waveform 1](Pre_layout/waveform_1.png)
-![ALU Waveform 2](Pre_layout/waveform_2.png)
+![ALU Waveform](Pre_layout/waveform.png)
+
 
 #### Pre-Layout Performance Metrics
 The Virtuoso Calculator was used to extract the critical path delay (worst-case ripple scenario) and average power dissipation from the transient simulation data.
 
-*   **Worst-case Propagation Delay:** **156.2 ps (156.2E-12 s)**
+*   **Worst-case Propagation Delay:** **830.0 ps (830.0E-12 s)**
     *   *Methodology:* Measured by triggering a carry ripple from the LSB to the MSB and measuring the time difference between the input pulse at $B<0>$ and the final `Cout` rising edge (Threshold = 0.6V).
     *   ![Delay Calculation](Pre_layout/delay.png)
-*   **Average Power Consumption:** **75.84 µW (75.84E-6 W)**
+*   **Average Power Consumption:** **23.19 µW (23.19E-6 W)**
     *   *Methodology:* Calculated using the `average(getData(":pwr" ?result "tran"))` function over the simulation window, capturing dynamic power during math operations.
     *   ![Power Calculation](Pre_layout/avg_power.png)
 
@@ -80,9 +80,9 @@ The `av_extracted` view was generated using Assura Quantus QRC to include parasi
 ![Post-Layout Waveform](Post_layout/waveform.png)
 
 #### Post-Layout Performance Metrics
-*   **Worst-case Propagation Delay (Critical Path):** **4.771 ns (4.771E-9 s)**
+*   **Worst-case Propagation Delay (Critical Path):** **5.602 ns (5.602E-9 s)**
     *   ![Post-Layout Delay Calculation](Post_layout/delay.png)
-*   **Average Power Consumption:** **91.28 µW (91.28E-6 W)**
+*   **Average Power Consumption:** **28.02 µW (28.02E-6 W)**
     *   ![Post-Layout Power Calculation](Post_layout/avg_power.png)
 
 ---
@@ -91,8 +91,8 @@ The `av_extracted` view was generated using Assura Quantus QRC to include parasi
 
 | Metric | Pre-Layout (Schematic) | Post-Layout (Extracted) | Deviation |
 | :--- | :--- | :--- | :--- |
-| **Propagation Delay (Critical Path)** | 156.2 ps | 4.771 ns | Massive Increase (~30x) |
-| **Average Power** | 75.84 µW | 91.28 µW | ~20.36% increase |
+| **Propagation Delay (Critical Path)** | 830.0 ps | 5.602 ns | Significant Increase (~6.75x) |
+| **Average Power** | 23.19 µW | 28.02 µW | ~20.83% increase |
 
 *Analysis:* 
-The massive increase in the critical path delay (from 156.2 ps to 4.771 ns) perfectly demonstrates the impact of parasitic RC elements in physical custom layout. In the schematic, wires are ideal. However, in the 360+ transistor layout, the extremely long internal routing buses (especially the carry-ripple chain cascading through 8 full adders) introduce significant interconnect capacitance and resistance. The increase in average power is also expected, as the circuit must now charge and discharge these real physical parasitic capacitances during switching operations. Based on the 4.771 ns critical path delay, the theoretical maximum operating frequency of this ALU is approximately **209 MHz**.
+The increase in the critical path delay (from 830.0 ps to 5.602 ns) demonstrates the impact of parasitic RC elements in physical custom layout. In the schematic, wires are ideal. However, in the 360+ transistor layout, the long internal routing buses (especially the carry-ripple chain cascading through 8 full adders) introduce significant interconnect capacitance and resistance. The increase in average power is also expected, as the circuit must now charge and discharge these real physical parasitic capacitances during switching operations. Based on the 5.602 ns critical path delay, the theoretical maximum operating frequency of this ALU is approximately **178.5 MHz**.
